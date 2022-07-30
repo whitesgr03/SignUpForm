@@ -1,0 +1,25 @@
+/* normalize */
+@import url(https://necolas.github.io/normalize.css/latest/normalize.css);
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+}
+
+
+aside.hero {
+    background-color: red;
+    flex-basis: 40%;
+    background-image: url();
+}
+
+
+main {
+    background-color: blue;
+    flex-basis: 60%;
+}
