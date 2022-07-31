@@ -1,5 +1,8 @@
 /* normalize */
-@import url(https://necolas.github.io/normalize.css/latest/normalize.css);
+@import url('https://necolas.github.io/normalize.css/latest/normalize.css');
+/* Dancing Script */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
 
 * {
     box-sizing: border-box;
