@@ -19,7 +19,12 @@ body {
 aside.hero {
     background-color: red;
     flex-basis: 40%;
-    background-image: url();
+    height: 100vh;
+    background-image: url('https://i.redd.it/5ipz8o61sye71.jpg');
+    background-size: cover;
+    background-position: 60%;
+    position: relative;
+}
 }
 
 
