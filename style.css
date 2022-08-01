@@ -51,4 +51,23 @@ body {
 main {
     background-color: var(--main-color);
     flex-basis: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main p span {
+    font-style: italic;
+}
+
+.wrapper {
+    padding: 0 15% 0 40px; 
+}
+
+.wrapper:first-of-type p{
+    font-size: 1.5rem;
+}
+
+.wrapper:first-of-type p:not(p:nth-child(3)) {
+    margin: 0;
 }
