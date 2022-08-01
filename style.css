@@ -62,6 +62,13 @@ main p span {
 
 .wrapper {
     padding: 0 15% 0 40px; 
+.wrapper:first-of-type {
+    position: relative;
+}
+
+.wrapper:first-of-type div {
+    position: absolute;
+    bottom: 0;
 }
 
 .wrapper:first-of-type p{
