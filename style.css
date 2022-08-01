@@ -80,17 +80,22 @@ main {
     margin: 0;
 }
 
-button {
+.wrapper:first-of-type span {
+    font-style: italic;
+}
+
+.wrapper:nth-of-type(2) button{
     padding:  10px 50px;
     background-color: var(--button-color);
     border-radius: 10px;
     border: 0;
     box-shadow: 1px 2px 10px var(--button-shadow);
     cursor: pointer;
+    margin-bottom: 16px;
     color: var(--main-color);
 }
 
-a {
+.wrapper:nth-of-type(2) a {
     text-decoration: none;
     color: var(--button-color);
     font-weight: bold;
