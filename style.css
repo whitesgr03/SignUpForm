@@ -11,6 +11,7 @@
 * {
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: rgb(255, 255, 255);
 }
 
 body {
@@ -19,7 +20,7 @@ body {
     justify-content: center;
 }
 
-aside.hero {
+.image {
     flex-basis: 40%;
     height: 100vh;
     background-image: url('https://i.redd.it/5ipz8o61sye71.jpg');
@@ -28,7 +29,7 @@ aside.hero {
     position: relative;
 }
 
-aside .logo {
+.image .logo {
     position: absolute;
     top: 25%;
     width: 100%;
@@ -42,12 +43,12 @@ aside .logo {
     font-family: 'Dancing Script', cursive;
 }
 
-aside img {
+.image img {
     height: 50%;
     margin-right: 10px;
 }
 
 main {
-    background-color: blue;
+    background-color: var(--main-color);
     flex-basis: 60%;
 }
