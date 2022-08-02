@@ -27,30 +27,35 @@
                 <legend>Let's do this!</legend>
                 <ul>
                     <li>
-                        <label for="firstName">FIRST NAME</label>
-                        <input type="text" id="firstName">
+                        <label for="firstName">FIRST NAME
+                            <input type="text" id="firstName" required>
+                        </label>
                     </li>
                     <li>
-                        <label for="lastName">LAST NAME</label>
-                        <input type="text" id="lastName">
+                        <label for="lastName">LAST NAME
+                            <input type="text" id="lastName" required>
+                        </label>
                     </li>
                     <li>
-                        <label for="email">EMAIL</label>
-                        <input type="email" id="email">
-                        
+                        <label for="email">EMAIL
+                            <input type="email" id="email" required>
+                        </label>
                     </li>
                     <li>
-                        <label for="phone">PHONE NUMBER</label>
-                        <input type="tel" id="phone">
-                        
+                        <label for="phone">PHONE NUMBER
+                            <input type="tel" title='Phone Number (Format: xxxx-xxxx)' pattern='[0-9]{10}' id="phone" minlength="10" maxlength="10" required>
+                        </label>
                     </li>
                     <li>
-                        <label for="password">PASSWORD</label>
-                        <input type="password" id="password">
+                        <label for="password">PASSWORD
+                            <input type="password" id="password" title='Password (UpperCase, LowerCase, Number or SpecialChar and min 8 Chars)
+                        ' pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+                        </label>
                     </li>
                     <li>
-                        <label for="password">CONFIRM PASSWORD</label>
-                        <input type="password" id="password">
+                        <label for="password">CONFIRM PASSWORD
+                            <input type="password" id="password" required>
+                        </label>
                     </li>
                 </ul>
             </fieldset>
