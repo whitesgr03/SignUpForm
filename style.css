@@ -59,6 +59,7 @@ main {
     display: flex;
     flex-direction: column;
     color: var(--main-color);
+    padding: 0 40px;
 }
 
 .wrapper {
