@@ -2,6 +2,8 @@
 @import url('https://necolas.github.io/normalize.css/latest/normalize.css');
 /* Dancing Script */
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+/* Noto Sans */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 
 :root {
     --main-bgc-color: rgb(0, 0, 0);
@@ -145,12 +147,17 @@ form ul {
     padding: 0;
     margin: 0;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
+    column-gap:80px;
+    row-gap:30px;
+    margin:10px 0;
 }
 
 form li {
     display: flex;
     flex-direction: column;
-    flex-basis: calc(50% - 20px);
+    flex-basis: calc(50% - 80px);   
+    font-family: 'Noto Sans', sans-serif;
+}
 }
