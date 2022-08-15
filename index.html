@@ -28,12 +28,12 @@
                 <ul>
                     <li>
                         <label for="firstName">FIRST NAME
-                            <input type="text" id="firstName" required>
+                            <input type="text" id="firstName" pattern="^[\w]{1,15}$" required>
                         </label>
                     </li>
                     <li>
                         <label for="lastName">LAST NAME
-                            <input type="text" id="lastName" required>
+                            <input type="text" id="lastName" pattern="^[\w]{1,15}$" required>
                         </label>
                     </li>
                     <li>
@@ -43,13 +43,13 @@
                     </li>
                     <li>
                         <label for="phone">PHONE NUMBER
-                            <input type="tel" title='Phone Number (Format: xxxx-xxxx)' pattern='[0-9]{10}' id="phone" minlength="10" maxlength="10" required>
+                            <input type="tel" title='Phone Number (Format: xxxxx-xxxxx)' pattern='[0-9]{10}' id="phone" minlength="10" maxlength="10" required>
                         </label>
                     </li>
                     <li>
                         <label for="password">PASSWORD
                             <input type="password" id="password" title='Password (UpperCase, LowerCase, Number or SpecialChar and min 8 Chars)
-                        ' pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+                        ' pattern="(?=^.{8,}$)((?=.*\d)|(?=.*_+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
                         </label>
                     </li>
                     <li>
