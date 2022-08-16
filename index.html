@@ -66,4 +66,62 @@
         </div>
     </main>
 </body>
+    <script>
+        'use strict';
+
+
+        function validation() {
+            if (!this.value) {
+                return;
+            }
+
+            const parentElement = this.parentNode.parentNode;
+            const regex = new RegExp(this.getAttribute('pattern'), 'g');
+            const valid = regex.test(this.value);
+
+            if (!valid) return validationFailed(this, parentElement, );
+
+            if (this.id === 'confirm') {
+                const password = document.querySelector('input#password').value;
+                if (this.value !== password) return validationFailed(this, parentElement);
+            }
+
+            parentElement.classList = 'success';    
+            this.removeEventListener('focusout', validation);   
+        }
+
+        function validationFailed(el,parent) {
+            let content = 'The field validation failed';
+
+            if (el.id) {
+                content = 'The password confirmation does not match.'
+            } else {
+                switch(el.type) {
+                    case 'text':
+                        content = 'The name must be alphanumeric.'
+                    break
+                    case 'email':
+                        content = 'The email must be a valid email.'
+                    break
+                    case 'tel':
+                        content = 'The phone number must be at least 10 numeric.'
+                    break
+                    case 'password':
+                        content = 'The password must be at least 8 characters.'
+                    break
+                }
+            }
+
+            parent.setAttribute('data-content', content)
+            parent.classList = 'failure'  
+            el.removeEventListener('focusout', validation); 
+        }
+
+        const inputArray = document.querySelectorAll('input');
+        for(let el of inputArray) {
+            el.addEventListener('focusout', validation);
+        }
+
+
+    </script>
 </html>
