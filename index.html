@@ -28,33 +28,33 @@
                 <ul>
                     <li>
                         <label for="firstName">FIRST NAME
-                            <input type="text" id="firstName" pattern="^[\w]{1,15}$" required>
+                            <input type="text" id="firstName" maxlength="15" pattern="^[\w]{1,15}$">
                         </label>
                     </li>
                     <li>
                         <label for="lastName">LAST NAME
-                            <input type="text" id="lastName" pattern="^[\w]{1,15}$" required>
+                            <input type="text" id="lastName" maxlength="15" pattern="^[\w]{1,15}$">
                         </label>
                     </li>
                     <li>
                         <label for="email">EMAIL
-                            <input type="email" id="email" required>
+                            <input type="email" id="email"  pattern="^.+@.+$">
                         </label>
                     </li>
                     <li>
                         <label for="phone">PHONE NUMBER
-                            <input type="tel" title='Phone Number (Format: xxxxx-xxxxx)' pattern='[0-9]{10}' id="phone" minlength="10" maxlength="10" required>
+                            <input type="tel" id="phone" minlength="10" maxlength="10" title='Phone Number (Format: xxxxx-xxxxx)' pattern='[0-9]{10}'>
                         </label>
                     </li>
                     <li>
                         <label for="password">PASSWORD
-                            <input type="password" id="password" title='Password (UpperCase, LowerCase, Number or SpecialChar and min 8 Chars)
-                        ' pattern="(?=^.{8,}$)((?=.*\d)|(?=.*_+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+                            <input type="password" id="password" minlength="8" maxlength="15" title='Password (UpperCase, LowerCase, Number or SpecialChar and min 8 Chars)
+                        ' pattern="(?=^.{8,}$)((?=.*\d)|(?=.*_+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" >
                         </label>
                     </li>
                     <li>
-                        <label for="password">CONFIRM PASSWORD
-                            <input type="password" id="password" required>
+                        <label for="confirm">CONFIRM PASSWORD
+                            <input type="password" id="confirm" minlength="8" maxlength="15" pattern="(?=^.{8,}$)">
                         </label>
                     </li>
                 </ul>
