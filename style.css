@@ -11,6 +11,8 @@
     --button-color: rgb(2, 158, 227);
     --button-shadow: rgb(115, 155, 176);
     --neon-text-color: rgb(218, 0, 1);
+    --failure-text-color: rgb(255, 0, 0);
+    --success-text-color: rgb(9, 147, 105);
 }
 
 * {
@@ -159,17 +161,63 @@ form li {
     flex-direction: column;
     flex-basis: calc(55% - 80px);   
     font-family: 'Noto Sans', sans-serif;
+    position: relative;
 }
+
+form li:nth-child(1),
+form li:nth-child(2),
+form li:nth-child(3),
+form li:nth-child(4) {
+    margin-bottom: 10px;
+}
+
+form li.failure::after {
+    content: attr(data-content);
+    color: var(--failure-text-color);
+    position: absolute;
+    top: 100%;
+    margin-top: 5px;
+}
+
+form li.failure::before {
+    content: '!';
+    width: 20px;
+    height: 20px;
+    background-color: var(--failure-text-color);
+    border: 1px solid var(--failure-text-color);
+    text-align: center;
+    border-radius: 100%;
+    position: absolute;
+    right: 100%;
+    bottom: 0;
+    margin-right: 5px;
+}
+
+form li.failure input {
+    border-bottom: 1px solid var(--failure-text-color);
+}
+
+form li.success input {
+    border-bottom: 1px solid var(--success-text-color);
+}
+
 
 form label {
     font-family: inherit;
 }
 
 form input {
+    display: block;
     background-color: transparent;
     color: var(--main-color);
     border: 0;
     border-bottom: 1px solid var(--main-color); 
     width: 100%;
     margin-top: 5px;
+    position: relative;
+}
+
+form input:focus{
+    outline: none;
+}
 }
