@@ -69,34 +69,51 @@
     <script>
         'use strict';
 
+        const inputArray = document.querySelectorAll('input');
+        for(let el of inputArray) {
+            el.addEventListener('focusout', validation);
+        }
 
-        function validation() {
+
+        function validation(event) {
+
+            const parentElement = this.parentNode.parentNode;
+
             if (!this.value) {
+                parentElement.classList = '';
                 return;
             }
 
-            const parentElement = this.parentNode.parentNode;
             const regex = new RegExp(this.getAttribute('pattern'), 'g');
             const valid = regex.test(this.value);
 
-            if (!valid) return validationFailed(this, parentElement, );
+            if (!valid)  {
+                validationFailed(event, parentElement, this);
+                return
+            };
 
             if (this.id === 'confirm') {
                 const password = document.querySelector('input#password').value;
-                if (this.value !== password) return validationFailed(this, parentElement);
+                if (this.value !== password) { 
+                    validationFailed(event, parentElement, this, this.id);
+                    return
+                }
             }
 
             parentElement.classList = 'success';    
+
+            if (event.type === "focusout") {
             this.removeEventListener('focusout', validation);   
+                this.addEventListener('keyup', validation)
+            }
         }
 
-        function validationFailed(el,parent) {
+        function validationFailed(event, parent, el, id) {
             let content = 'The field validation failed';
 
-            if (el.id) {
-                content = 'The password confirmation does not match.'
-            } else {
-                switch(el.type) {
+            let type = id ?? el.type
+
+            switch(type) {
                     case 'text':
                         content = 'The name must be alphanumeric.'
                     break
@@ -104,24 +121,23 @@
                         content = 'The email must be a valid email.'
                     break
                     case 'tel':
-                        content = 'The phone number must be at least 10 numeric.'
+                    content = 'The phone number must be 10 numeric.'
                     break
                     case 'password':
                         content = 'The password must be at least 8 characters.'
                     break
-                }
+                default: // 預設用來接收 confirm password
+                    content = 'The password confirmation does not match.';
             }
 
             parent.setAttribute('data-content', content)
             parent.classList = 'failure'  
+
+            if (event.type === "focusout") {
             el.removeEventListener('focusout', validation); 
+                el.addEventListener('keyup', validation)
         }
-
-        const inputArray = document.querySelectorAll('input');
-        for(let el of inputArray) {
-            el.addEventListener('focusout', validation);
         }
-
 
     </script>
 </html>
