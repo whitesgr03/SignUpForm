@@ -22,7 +22,7 @@
                 <p>You <span>know</span> you want to.</p>
             </div>
         </div>
-        <form id="signUp" action="#" >
+        <form id="signUp" action="#">
             <fieldset>
                 <legend>Let's do this!</legend>
                 <ul>
@@ -30,32 +30,39 @@
                         <label for="firstName">FIRST NAME
                             <input type="text" id="firstName" maxlength="15" pattern="^\w{1,15}$" >
                         </label>
+                        <span aria-live="polite"></span>
                     </li>
                     <li>
                         <label for="lastName">LAST NAME
                             <input type="text" id="lastName" maxlength="15" pattern="^\w{1,15}$" >
                         </label>
+                        <span aria-live="polite"></span>
                     </li>
                     <li>
                         <label for="email">EMAIL
                             <input type="email" id="email"  pattern="^.+@.+$" >
                         </label>
+                        <span aria-live="polite"></span>
                     </li>
                     <li>
                         <label for="phone">PHONE NUMBER
-                            <input type="tel" id="phone" minlength="10" maxlength="10" title='Phone Number (Format: xxxxx-xxxxx)' pattern='[0-9]{10}' >
+                            <input type="tel" id="phone" minlength="10" maxlength="10" title='Phone Number (Format: xxxxx-xxxxx)' pattern='^[0-9]{10}$' >
                         </label>
+                        <span aria-live="polite"></span>
                     </li>
                     <li>
                         <label for="password">PASSWORD
-                            <input type="password" id="password" minlength="8" maxlength="15" title='Password (UpperCase, LowerCase, Number or SpecialChar and min 8 Chars)
-                        ' pattern="(?=^.{8,15}$)((?=.*\d)|(?=.*_+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" >
+                            <input type="password" id="password" minlength="8" title='Password (UpperCase, LowerCase, Number or SpecialChar and min 8 Chars)
+                        ' pattern="(?=^.{8,}$)((?=.*\d)|(?=.*_+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" >
                         </label>
+                        <span aria-live="polite"></span>
                     </li>
                     <li>
                         <label for="confirm">CONFIRM PASSWORD
-                            <input type="password" id="confirm" minlength="8" maxlength="15" pattern="^\S{8,15}$" required>
+                            <input type="password" id="confirm" minlength="8" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*_+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" 
+                            >
                         </label>
+                        <span aria-live="polite"></span>
                     </li>
                 </ul>
             </fieldset>
@@ -70,6 +77,7 @@
         'use strict';
 
         const inputArray = document.querySelectorAll('input');
+
         for(let el of inputArray) {
             el.addEventListener('focusout', validation);
         }
@@ -77,10 +85,12 @@
 
         function validation(event) {
 
-            const parentElement = this.parentNode.parentNode;
+            const listElement = this.parentNode;
+            const spanElement = this.parentNode.nextElementSibling;
 
             if (!this.value) {
-                parentElement.classList = '';
+                listElement.classList = '';
+                spanElement.textContent = ''
                 return;
             }
 
@@ -88,27 +98,39 @@
             const valid = regex.test(this.value);
 
             if (!valid)  {
-                validationFailed(event, parentElement, this);
+                validationFailed(event, spanElement, this);
+                parentElement.classList = 'failure'
                 return
             };
 
             if (this.id === 'confirm') {
                 const password = document.querySelector('input#password').value;
+
                 if (this.value !== password) { 
-                    validationFailed(event, parentElement, this, this.id);
+                    validationFailed(event, spanElement, this, this.id);
+                    parentElement.classList = 'failure'
                     return
                 }
             }
 
             parentElement.classList = 'success';    
 
+            if (spanElement.textContent) {
+                spanElement.textContent = '';
+            }
+
             if (event.type === "focusout") {
             this.removeEventListener('focusout', validation);   
-                this.addEventListener('keyup', validation)
+
+                this.addEventListener('input', validation)
+
+                if (this.id === 'password') {
+                    this.addEventListener('input', passwordCheck)
+                }
             }
         }
 
-        function validationFailed(event, parent, el, id) {
+        function validationFailed(event, spanElement, el, id) {
             let content = 'The field validation failed';
 
             let type = id ?? el.type
@@ -130,12 +152,14 @@
                     content = 'The password confirmation does not match.';
             }
 
-            parent.setAttribute('data-content', content)
-            parent.classList = 'failure'  
+            spanElement.textContent = content
 
             if (event.type === "focusout") {
             el.removeEventListener('focusout', validation); 
-                el.addEventListener('keyup', validation)
+                el.addEventListener('input', validation)
+            }
+        }
+
         }
         }
 
