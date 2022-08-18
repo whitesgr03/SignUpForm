@@ -164,22 +164,16 @@ form li {
     position: relative;
 }
 
-form li:nth-child(1),
-form li:nth-child(2),
-form li:nth-child(3),
-form li:nth-child(4) {
+form li:nth-child(-n+4) {
     margin-bottom: 10px;
 }
 
-form li.failure::after {
-    content: attr(data-content);
-    color: var(--failure-text-color);
-    position: absolute;
-    top: 100%;
-    margin-top: 5px;
+form label {
+    font-family: inherit;
+    position: relative;
 }
 
-form li.failure::before {
+form label.failure::before {
     content: '!';
     width: 20px;
     height: 20px;
@@ -189,22 +183,25 @@ form li.failure::before {
     border-radius: 100%;
     position: absolute;
     right: 100%;
-    bottom: 0;
+    bottom: 0%;
     margin-right: 5px;
 }
 
-form li.failure input {
+form label.failure + span {
+    color: var(--failure-text-color);
+    position: absolute;
+    margin-top: 5px;
+    top: 100%;
+}
+
+form label.failure input {
     border-bottom: 1px solid var(--failure-text-color);
 }
 
-form li.success input {
+form label.success input {
     border-bottom: 1px solid var(--success-text-color);
 }
 
-
-form label {
-    font-family: inherit;
-}
 
 form input {
     display: block;
@@ -213,7 +210,6 @@ form input {
     border: 0;
     border-bottom: 1px solid var(--main-color); 
     width: 100%;
-    margin-top: 5px;
     position: relative;
 }
 
