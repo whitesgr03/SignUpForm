@@ -115,34 +115,30 @@ form {
     padding: .75rem 0;
 }
 
+
+form:focus-within fieldset,
+form:focus-within legend{
+    animation-play-state: paused;
+}
+
+
 form fieldset{
     margin: 0;
     padding: 45px 30px;
-    border: 5px solid #fff;
+    border: 5px solid var(--main-color);
     border-radius: 20px;
-    box-shadow:
-        0 0 5px #fff,
-        inset 0 0 5px #fff,
-        0 0 15px var(--button-color),
-        inset 0 0 15px var(--button-color),
-        0 0 20px var(--button-color),
-        inset 0 0 20px var(--button-color);
-    
+    animation: neon-border 1.5s infinite alternate;
 }
+
+
 
 form legend {
     position: absolute;
     font-size: 1.5rem;
     top: 0; 
-    text-shadow:
-        -5px -5px 1rem #fff,
-        5px 5px 1rem #fff,
-        0 0 12px var(--neon-text-color),
-        0 0 14px var(--neon-text-color),
-        0 0 16px var(--neon-text-color),
-        0 0 18px var(--neon-text-color),
-        0 0 20px var(--neon-text-color);
+    animation: neon-text 1.5s infinite alternate;
 }
+
 
 form ul {
     list-style: none;
@@ -179,6 +175,7 @@ form label.failure::before {
     height: 20px;
     background-color: var(--failure-text-color);
     border: 1px solid var(--failure-text-color);
+    color: var(--main-color);
     text-align: center;
     border-radius: 100%;
     position: absolute;
@@ -202,6 +199,9 @@ form label.success input {
     border-bottom: 1px solid var(--success-text-color);
 }
 
+form label:focus-within {
+    color: rgb(238, 109, 46);
+}
 
 form input {
     display: block;
@@ -210,10 +210,63 @@ form input {
     border: 0;
     border-bottom: 1px solid var(--main-color); 
     width: 100%;
+    margin-top: 3px;
     position: relative;
 }
 
 form input:focus{
     outline: none;
 }
+
+
+@keyframes neon-text {
+    0%,
+    19%,
+    21%,
+    23%,
+    25%,
+    54%,
+    56%,
+    100% {
+        text-shadow:
+            -5px -5px 1rem var(--main-color),
+            5px 5px 1rem var(--main-color),
+            0 0 12px var(--neon-text-color),
+            0 0 14px var(--neon-text-color),
+            0 0 16px var(--neon-text-color),
+            0 0 18px var(--neon-text-color),
+            0 0 20px var(--neon-text-color);
+        }
+    20%,
+    24%,
+    55% {
+        text-shadow: none;
+        box-shadow: none;
+    }
+}
+
+@keyframes neon-border {
+    0%,
+    19%,
+    21%,
+    23%,
+    25%,
+    54%,
+    56%,
+    100% {
+        box-shadow:
+            0 0 5px var(--main-color),
+            inset 0 0 5px var(--main-color),
+            0 0 15px var(--button-color),
+            inset 0 0 15px var(--button-color),
+            0 0 20px var(--button-color),
+            inset 0 0 20px var(--button-color);
+        }
+
+    20%,
+    24%,
+    55% {
+        text-shadow: none;
+        box-shadow: none;
+    }
 }
