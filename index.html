@@ -76,9 +76,9 @@
     <script>
         'use strict';
 
-        const inputArray = document.querySelectorAll('input');
+        const inputs = document.querySelectorAll('input');
 
-        for(let el of inputArray) {
+        for(let el of inputs) {
             el.addEventListener('focusout', validation);
         }
 
@@ -115,11 +115,13 @@
 
             if (event.type === "focusout") {
             this.removeEventListener('focusout', validation);   
-
                 this.addEventListener('input', validation)
 
                 if (this.id === 'password') {
-                    this.addEventListener('input', passwordCheck)
+                    this.addEventListener('input', passwordCheck);
+                }
+                if (this.id === 'confirm') {
+                    this.addEventListener('input', confirmPasswordCheck);
                 }
             }
         }
@@ -148,12 +150,33 @@
             label.className = 'failure'
         }
 
-            if (event.type === "focusout") {
-            el.removeEventListener('focusout', validation); 
-                el.addEventListener('input', validation)
+        function passwordCheck() {
+            const el = document.querySelector(`input#confirm`);
+            const label = el.parentNode;
+            const span = label.nextElementSibling;
+
+                if (label.className === 'success' && this.value !== el.value) {
+                    span.textContent = 'The password confirmation does not match.';
+                    label.className = 'failure'
+
+                } else if (this.value === el.value){
+                    span.textContent = '';
+                    label.className = 'success';
             }
         }
 
+        function confirmPasswordCheck() {
+            const el = document.querySelector(`input#password`);
+            const label = this.parentNode;
+            const span = label.nextElementSibling;
+
+                if (this.value.length >= 8 && this.value !== el.value) {
+                    span.textContent = 'The password confirmation does not match.';
+                    label.className = 'failure'
+
+                } else if (this.value === el.value){
+                    span.textContent = '';
+                    label.className = 'success';
         }
         }
 
