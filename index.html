@@ -124,12 +124,10 @@
             }
         }
 
-        function validationFailed(event, spanElement, el, id) {
-            let content = 'The field validation failed';
+        function validationFailed(span, label) {
+            let content = null;
 
-            let type = id ?? el.type
-
-            switch(type) {
+            switch(this.type) {
                     case 'text':
                         content = 'The name must be alphanumeric.'
                     break
@@ -142,11 +140,13 @@
                     case 'password':
                         content = 'The password must be at least 8 characters.'
                     break
-                default: // 預設用來接收 confirm password
-                    content = 'The password confirmation does not match.';
+                default:
+                    content = 'The field validation failed';
             }
 
-            spanElement.textContent = content
+            span.textContent = content
+            label.className = 'failure'
+        }
 
             if (event.type === "focusout") {
             el.removeEventListener('focusout', validation); 
