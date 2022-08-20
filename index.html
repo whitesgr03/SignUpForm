@@ -84,39 +84,33 @@
 
 
         function validation(event) {
+            // 約束驗證
+            // const input = this.validity;
+            // const regex = new RegExp(this.getAttribute('pattern'), 'g');
 
-            const listElement = this.parentNode;
-            const spanElement = this.parentNode.nextElementSibling;
+            const label = this.parentNode;
+            const span = label.nextElementSibling;
 
-            if (!this.value) {
-                listElement.classList = '';
-                spanElement.textContent = ''
+            if (this.value.length === 0) {
+                label.className = '';
+                span.textContent = ''
                 return;
             }
 
-            const regex = new RegExp(this.getAttribute('pattern'), 'g');
+            const patterns = {
+                'text': '^\\w{1,15}$',
+                'email':'^.+@.+$',
+                'tel': '^[0-9]{10}$',
+                'password': "(?=^.{8,}$)((?=.*\\d)|(?=.*_+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$",
+            }
+            const regex = new RegExp(patterns[this.type], 'g');
             const valid = regex.test(this.value);
 
             if (!valid)  {
-                validationFailed(event, spanElement, this);
-                parentElement.classList = 'failure'
-                return
-            };
-
-            if (this.id === 'confirm') {
-                const password = document.querySelector('input#password').value;
-
-                if (this.value !== password) { 
-                    validationFailed(event, spanElement, this, this.id);
-                    parentElement.classList = 'failure'
-                    return
-                }
-            }
-
-            parentElement.classList = 'success';    
-
-            if (spanElement.textContent) {
-                spanElement.textContent = '';
+                validationFailed.call(this, span, label);
+            } else {
+                span.textContent = '';
+                label.className = 'success';
             }
 
             if (event.type === "focusout") {
