@@ -77,11 +77,38 @@
         'use strict';
 
         const inputs = document.querySelectorAll('input');
+        const signForm = document.querySelector('form');
+
+        signForm.addEventListener('submit', formValidation);
 
         for(let el of inputs) {
             el.addEventListener('focusout', validation);
         }
 
+        function formValidation (event) {
+            event.preventDefault();
+
+            let isValid = true
+
+            for (let el of inputs) {
+                const label = el.parentNode;
+                const span = label.nextElementSibling;
+                if (el.value.length === 0) {
+                    validationFailed.call(el, span, label);
+                    isValid = false;
+                } else {
+                    validation.call(el, event);
+                    if (label.className !== 'success') {
+                        isValid = false
+                        return
+                    }
+                }
+            }
+
+            if (isValid) {
+                console.log('Success!')
+            }
+        }
 
         function validation(event) {
             // 約束驗證
