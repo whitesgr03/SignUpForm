@@ -112,20 +112,18 @@
 
         function validation(event) {
             // 約束驗證
-            // const input = this.validity;
-            // const regex = new RegExp(this.getAttribute('pattern'), 'g');
-
+            const inputState = this.validity;
             const label = this.parentNode;
             const span = label.nextElementSibling;
 
-            if (this.value.length === 0) {
+            if (this.value.length === 0 && inputState.valueMissing) {
                 label.className = '';
-                span.textContent = ''
+                span.textContent = '';
                 return;
             }
 
             const patterns = {
-                'text': '^\\w{1,15}$',
+                'text': '^[A-Za-z]{1,15}$',
                 'email':'^.+@.+$',
                 'tel': '^[0-9]{10}$',
                 'password': "(?=^.{8,}$)((?=.*\\d)|(?=.*_+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$",
@@ -133,11 +131,11 @@
             const regex = new RegExp(patterns[this.type], 'g');
             const valid = regex.test(this.value);
 
-            if (!valid)  {
-                validationFailed.call(this, span, label);
-            } else {
+            if (valid && inputState.valid)  {
                 span.textContent = '';
                 label.className = 'success';
+            } else {
+                validationFailed.call(this, span, label);
             }
 
             if (event.type === "focusout") {
@@ -145,9 +143,11 @@
                 this.addEventListener('input', validation)
 
                 if (this.id === 'password') {
+                    passwordCheck.call(this);
                     this.addEventListener('input', passwordCheck);
                 }
                 if (this.id === 'confirm') {
+                    confirmPasswordCheck.call(this);
                     this.addEventListener('input', confirmPasswordCheck);
                 }
             }
