@@ -28,39 +28,39 @@
                 <ul>
                     <li>
                         <label for="firstName">FIRST NAME
-                            <input type="text" id="firstName" maxlength="15" pattern="^\w{1,15}$" >
+                            <input type="text" id="firstName" title="The name must be alphabet." maxlength="15" pattern="^[A-Za-z]{1,15}$" required>
                         </label>
                         <span aria-live="polite"></span>
                     </li>
                     <li>
                         <label for="lastName">LAST NAME
-                            <input type="text" id="lastName" maxlength="15" pattern="^\w{1,15}$" >
+                            <input type="text" id="lastName" title="The name must be alphabet." maxlength="15" pattern="^[A-Za-z]{1,15}$" required>
                         </label>
                         <span aria-live="polite"></span>
                     </li>
                     <li>
                         <label for="email">EMAIL
-                            <input type="email" id="email"  pattern="^.+@.+$" >
+                            <input type="email" id="email"  pattern="^.+@.+$" required>
                         </label>
                         <span aria-live="polite"></span>
                     </li>
                     <li>
                         <label for="phone">PHONE NUMBER
-                            <input type="tel" id="phone" minlength="10" maxlength="10" title='Phone Number (Format: xxxxx-xxxxx)' pattern='^[0-9]{10}$' >
+                            <input type="tel" id="phone" minlength="10" maxlength="10" title="Phone Number (Format: xxxxx-xxxxx)" pattern="^[0-9]{10}$" required>
                         </label>
                         <span aria-live="polite"></span>
                     </li>
                     <li>
                         <label for="password">PASSWORD
-                            <input type="password" id="password" minlength="8" title='Password (UpperCase, LowerCase, Number or SpecialChar and min 8 Chars)
-                        ' pattern="(?=^.{8,}$)((?=.*\d)|(?=.*_+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" >
+                            <input type="password" id="password" minlength="8" title="Password (UpperCase, LowerCase, Number or SpecialChar and min 8 Chars)
+                        " pattern="(?=^.{8,}$)((?=.*\d)|(?=.*_+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
                         </label>
                         <span aria-live="polite"></span>
                     </li>
                     <li>
                         <label for="confirm">CONFIRM PASSWORD
                             <input type="password" id="confirm" minlength="8" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*_+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" 
-                            >
+                            required>
                         </label>
                         <span aria-live="polite"></span>
                     </li>
