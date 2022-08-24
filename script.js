@@ -86,11 +86,8 @@ function validationFailed(span, label) {
         case 'tel':
             content = 'The phone number must be 10 numeric.'
         break
-        case 'password':
-            content = 'The password must be at least 8 characters.'
-        break
         default:
-            content = 'The field validation failed';
+            content = 'The password confirmation does not match.';
     }
 
     span.textContent = content
