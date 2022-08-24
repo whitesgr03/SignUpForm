@@ -101,23 +101,53 @@ function validationFailed(span, label) {
     label.className = 'failure'
 }
 
-function passwordCheck() {
-    const el = document.querySelector(`input#confirm`);
-    const label = el.parentNode;
-    const span = label.nextElementSibling;
+function passwordValidation() {
+    const patterns = {
+        length: '.{8,}',
+        lowerCase: '[a-z]',
+        upperCase: '[A-Z]',
+        numericUnderscore: '[0-9_]',
+    }
 
-        if (label.className === 'success' && this.value !== el.value) {
-            span.textContent = 'The password confirmation does not match.';
-            label.className = 'failure'
-
-        } else if (this.value === el.value){
-            span.textContent = '';
-            label.className = 'success';
+    let countValid = 0
+    let isValid = false;
+    
+    for (let re in patterns) {
+        const regex = new RegExp(patterns[re]);
+        const valid = regex.test(this.value);
+        const el = document.querySelector(`li[data-rule="${re}"]`);
+        if (valid) {
+            el.className = 'success';
+            countValid += 1;
+        } else {
+            el.className = '';
+            countValid -= 1;
         }
+    }
+
+    const label = this.parentNode;
+
+    if (countValid === 4) {
+        const pattern = "(?=^.{8,}$)(?:(?=.*\\d)|(?=.*_))(?![\\.\\n\\s])(?=.*[A-Z])(?=.*[a-z]).*$";
+        const regex = new RegExp(pattern, 'g');
+        const valid = regex.test(this.value);
+
+        if (valid) {
+            label.className = 'success';
+            isValid = true
+        }
+    } else {
+        label.className = '';
 }
 
-function confirmPasswordCheck() {
-    const el = document.querySelector(`input#password`);
+    const el = document.querySelector(`input#confirm`);
+    confirmPassword.call(el);
+
+    if (isValid) {
+        return 1
+    }
+}
+
     const label = this.parentNode;
     const span = label.nextElementSibling;
 
