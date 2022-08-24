@@ -44,12 +44,16 @@
                         </label>
                         <span aria-live="polite"></span>
                     </li>
-                    <li>
+                    <li >
                         <label for="password">PASSWORD
-                            <input type="password" id="password" minlength="8" title="Password (UpperCase, LowerCase, Number or SpecialChar and min 8 Chars)
-                        " pattern="(?=^.{8,}$)((?=.*\d)|(?=.*_+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+                            <input type="password" id="password" minlength="8" title="Password (UpperCase, LowerCase, Number or SpecialChar and min 8 Chars)" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*_+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
                         </label>
-                        <span aria-live="polite"></span>
+                        <ul class="passwordRules" aria-live="polite">
+                            <li data-rule="length">At least 8 characters</li>
+                            <li data-rule="lowerCase">One lowercase character</li>
+                            <li data-rule="upperCase">One uppercase character</li>
+                            <li data-rule="numericUnderscore">One number or special character</li>
+                        </ul>
                     </li>
                     <li>
                         <label for="confirm">CONFIRM PASSWORD
