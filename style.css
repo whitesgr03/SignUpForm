@@ -140,24 +140,30 @@ form ul.fieldList > li {
     margin-bottom: 50px;
 }
 
+form li > ul.passwordRules {
+    position: absolute;
+    margin-top: 5px;
+    top: 100%;
+    padding-left: 20px;
+    list-style: disc;
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
-    column-gap:50px;
-    row-gap: 40px;
-    margin:10px 0;
 }
 
-form li {
-    display: flex;
-    flex-direction: column;
-    flex-basis: calc(55% - 80px);   
-    font-family: 'Noto Sans', sans-serif;
+form li > ul.passwordRules > li {
+    flex-basis: 50%;
     position: relative;
+    opacity: .4;
 }
 
-form li:nth-child(-n+4) {
-    margin-bottom: 10px;
+form li > ul.passwordRules li.success {
+    color: var(--success-text-color);
+    opacity: 1;
+}
+
+form li > ul.passwordRules li.failure {
+    color: var(--failure-text-color);
+    opacity: 1;
 }
 
 form label {
