@@ -5,7 +5,8 @@ const signForm = document.querySelector('form');
 
 signForm.addEventListener('submit', formValidation);
 
-for (let el of inputs) {
+// 所有 input 字段執行各別的 event listener
+for (let el of inputs) { 
     switch (el.id) {
         case 'password':
             el.addEventListener('input', passwordValidation);
@@ -18,7 +19,8 @@ for (let el of inputs) {
     }       
 }
 
-function formValidation (event) {
+// submit 驗證, 未輸入值的字段將顯示錯誤, 排除 password 是因為它有自己的驗證規則, 有輸入值則執行驗證並收集通過驗證的字段
+function formValidation (event) { 
     event.preventDefault();
 
     let countValid = 0
@@ -38,15 +40,16 @@ function formValidation (event) {
                 break;
                 default:
                     countValid += fieldValidation.call(el, event);
-            }
+            }   
         }
-    }
+    }       
 
     if (countValid === 5) {
         console.log('Success!')
     }
 }
 
+// 進行除了 password 和 confirm password 之外的其他所有字段驗證
 function fieldValidation(event) {
     // Constraint validation
     const inputState = this.validity;
@@ -79,13 +82,14 @@ function fieldValidation(event) {
     if (event.type === "focusout") {
         this.removeEventListener('focusout', fieldValidation);
         this.addEventListener('input', fieldValidation)
-        }
+    }
 
     if (isValid) {
         return 1
     }
 }
 
+// 驗證失敗後執行顯示錯誤訊息, 獨立寫出來是為了讓 submit 更方便執行
 function validationFailed(span, label) {
     let content = null;
     
@@ -98,8 +102,8 @@ function validationFailed(span, label) {
         break
         case 'tel':
             content = 'The phone number must be 10 numeric.'
-        break
-        default:
+            break
+        default: 
             content = 'The password confirmation does not match.';
     }
 
@@ -107,6 +111,7 @@ function validationFailed(span, label) {
     label.className = 'failure'
 }
 
+// password 字段驗證
 function passwordValidation() {
     const patterns = {
         length: '.{8,}',
@@ -144,7 +149,7 @@ function passwordValidation() {
         }
     } else {
         label.className = '';
-}
+    }
 
     const el = document.querySelector(`input#confirm`);
     confirmPassword.call(el);
@@ -154,6 +159,7 @@ function passwordValidation() {
     }
 }
 
+// confirm password 字段驗證
 function confirmPassword(event) {
     const label = this.parentNode;
     const span = label.nextElementSibling;
@@ -173,17 +179,17 @@ function confirmPassword(event) {
     const el = document.querySelector(`input#password`);
 
     if (this.value === el.value) {
-            span.textContent = '';
-            label.className = 'success';
+        span.textContent = '';
+        label.className = 'success';
         isValid = true;
     } else {
         validationFailed.call(this, span, label);
-        }
+    }
 
     if (event?.type === "focusout") {
         this.removeEventListener('focusout', confirmPassword);
         this.addEventListener('input', confirmPassword)
-}
+    }
 
     if (isValid) {
         return 1
