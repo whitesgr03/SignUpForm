@@ -5,8 +5,17 @@ const signForm = document.querySelector('form');
 
 signForm.addEventListener('submit', formValidation);
 
-for(let el of inputs) {
-    el.addEventListener('focusout', validation);
+for (let el of inputs) {
+    switch (el.id) {
+        case 'password':
+            el.addEventListener('input', passwordValidation);
+            break;
+        case 'confirm':
+            el.addEventListener('focusout', confirmPassword);
+            break;
+        default:
+            el.addEventListener('focusout', fieldValidation);
+    }       
 }
 
 function formValidation (event) {
