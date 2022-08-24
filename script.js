@@ -21,24 +21,28 @@ for (let el of inputs) {
 function formValidation (event) {
     event.preventDefault();
 
-    let isValid = true
+    let countValid = 0
 
     for (let el of inputs) {
         const label = el.parentNode;
         const span = label.nextElementSibling;
-        if (el.value.length === 0) {
+        if (el.id !== 'password' && el.value.length === 0) {
             validationFailed.call(el, span, label);
-            isValid = false;
         } else {
-            validation.call(el, event);
-            if (label.className !== 'success') {
-                isValid = false
-                return
+            switch (el.id) {
+                case 'password':
+                    countValid += passwordValidation.call(el, event);
+                break;
+                case 'confirm':
+                    countValid += confirmPassword.call(el, event);
+                break;
+                default:
+                    countValid += fieldValidation.call(el, event);
             }
         }
     }
 
-    if (isValid) {
+    if (countValid === 5) {
         console.log('Success!')
     }
 }
