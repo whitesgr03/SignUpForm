@@ -34,8 +34,8 @@ function formValidation (event) {
     }
 }
 
-function validation(event) {
-    // 約束驗證
+function fieldValidation(event) {
+    // Constraint validation
     const inputState = this.validity;
     const label = this.parentNode;
     const span = label.nextElementSibling;
@@ -47,33 +47,29 @@ function validation(event) {
     }
 
     const patterns = {
-        'text': '^[A-Za-z]{1,15}$',
-        'email':'^.+@.+$',
-        'tel': '^[0-9]{10}$',
-        'password': "(?=^.{8,}$)((?=.*\\d)|(?=.*_+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$",
+        text: '^[A-Za-z]{1,15}$',
+        email:'^.+@.+$',
+        tel: '^\\d{10}$',
     }
     const regex = new RegExp(patterns[this.type], 'g');
     const valid = regex.test(this.value);
+    let isValid = false;
     
     if (valid && inputState.valid)  {
         span.textContent = '';
         label.className = 'success';
+        isValid = true
     } else {
         validationFailed.call(this, span, label);
     }
 
     if (event.type === "focusout") {
-        this.removeEventListener('focusout', validation);
-        this.addEventListener('input', validation)
+        this.removeEventListener('focusout', fieldValidation);
+        this.addEventListener('input', fieldValidation)
+        }
 
-        if (this.id === 'password') {
-            passwordCheck.call(this);
-            this.addEventListener('input', passwordCheck);
-        }
-        if (this.id === 'confirm') {
-            confirmPasswordCheck.call(this);
-            this.addEventListener('input', confirmPasswordCheck);
-        }
+    if (isValid) {
+        return 1
     }
 }
 
