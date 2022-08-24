@@ -8,11 +8,12 @@
 :root {
     --main-bgc-color: rgb(0, 0, 0);
     --main-color: rgb(255, 255, 255);
-    --button-color: rgb(2, 158, 227);
+    --button-color: rgb(0, 95, 136);
     --button-shadow: rgb(115, 155, 176);
-    --neon-text-color: rgb(218, 0, 1);
-    --failure-text-color: rgb(255, 0, 0);
-    --success-text-color: rgb(9, 147, 105);
+    --neon-text-color: rgb(175, 24, 24);
+    --neon-border-color: rgb(51, 194, 255);
+    --failure-text-color: rgb(254, 103, 103);
+    --success-text-color: rgb(91, 241, 193);
 }
 
 * {
