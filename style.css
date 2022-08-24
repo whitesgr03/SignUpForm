@@ -128,11 +128,18 @@ form legend {
     animation: neon-text 1.5s infinite alternate;
 }
 
-
-form ul {
+form ul.fieldList {
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+form ul.fieldList > li {
+    font-family: 'Noto Sans', sans-serif;
+    position: relative;
+    margin-bottom: 50px;
+}
+
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
