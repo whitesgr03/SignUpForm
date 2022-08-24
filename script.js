@@ -148,15 +148,39 @@ function passwordValidation() {
     }
 }
 
+function confirmPassword(event) {
     const label = this.parentNode;
     const span = label.nextElementSibling;
+    let isValid = false;
 
-        if (this.value.length >= 8 && this.value !== el.value) {
-            span.textContent = 'The password confirmation does not match.';
-            label.className = 'failure'
+    if (this.value.length === 0) {
+        label.className = '';
+        span.textContent = '';
+        return;
+    }
 
-        } else if (this.value === el.value){
+    if (this.value.length < 8) {
+        validationFailed.call(this, span, label);
+        return;
+    }
+
+    const el = document.querySelector(`input#password`);
+
+    if (this.value === el.value) {
             span.textContent = '';
             label.className = 'success';
+        isValid = true;
+    } else {
+        validationFailed.call(this, span, label);
         }
+
+    if (event?.type === "focusout") {
+        this.removeEventListener('focusout', confirmPassword);
+        this.addEventListener('input', confirmPassword)
+}
+
+    if (isValid) {
+        return 1
+    }
+
 }
