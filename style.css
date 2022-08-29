@@ -12,7 +12,7 @@
     --button-shadow: rgb(115, 155, 176);
     --neon-text-color: rgb(175, 24, 24);
     --neon-border-color: rgb(51, 194, 255);
-    --failure-text-color: rgb(254, 103, 103);
+    --invalid-text-color: rgb(254, 103, 103);
     --success-text-color: rgb(91, 241, 193);
 }
 
@@ -161,8 +161,8 @@ form li > ul.passwordRules li.success {
     opacity: 1;
 }
 
-form li > ul.passwordRules li.failure {
-    color: var(--failure-text-color);
+form li > ul.passwordRules li.invalid {
+    color: var(--invalid-text-color);
     opacity: 1;
 }
 
@@ -171,12 +171,12 @@ form label {
     position: relative;
 }
 
-form label.failure::before {
+form label.invalid::before {
     content: '!';
     width: 20px;
     height: 20px;
-    background-color: var(--failure-text-color);
-    border: 1px solid var(--failure-text-color);
+    background-color: var(--invalid-text-color);
+    border: 1px solid var(--invalid-text-color);
     color: var(--main-color);
     text-align: center;
     border-radius: 100%;
@@ -186,15 +186,15 @@ form label.failure::before {
     margin-right: 5px;
 }
 
-form label.failure + span {
-    color: var(--failure-text-color);
+form label.invalid + span {
+    color: var(--invalid-text-color);
     position: absolute;
     margin-top: 5px;
     top: 100%;
 }
 
-form label.failure input {
-    border-bottom: 1px solid var(--failure-text-color);
+form label.invalid input {
+    border-bottom: 1px solid var(--invalid-text-color);
 }
 
 form label.success input {
