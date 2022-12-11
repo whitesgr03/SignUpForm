@@ -1,0 +1,65 @@
+/* normalize */
+@import url("https://necolas.github.io/normalize.css/latest/normalize.css");
+/* Noto Sans */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
+/* Roboto */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+:root {
+    --main-color-dark: rgb(0, 0, 0);
+    --main-color-light: rgb(255, 255, 255);
+    --button-color: rgb(0, 95, 136);
+    --neon-text-color: rgb(175, 24, 24);
+    --neon-border-color: rgb(51, 194, 255);
+    --error-text-color: rgb(254, 103, 103);
+    --success-text-color: rgb(91, 241, 193);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+        "Segoe UI Emoji", "Segoe UI Symbol";
+    color: var(--main-color-light);
+}
+
+p {
+    margin: 0;
+}
+
+input {
+    outline: none;
+}
+
+ul,
+li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+}
+
+main {
+    background-color: var(--main-color-dark);
+    height: 100%;
+    display: grid;
+    grid-template: 1fr / 1fr 2fr;
+    grid-template-areas: "aside wrapper";
+}
+
+aside {
+    grid-area: aside;
+    background-image: url("../img/sign.jpg");
+    background-size: cover;
+    background-position: 60%;
+    position: relative;
+}
+
+.wrapper {
+    grid-area: wrapper;
+    overflow: auto;
+    padding: 40px 10%;
+}
