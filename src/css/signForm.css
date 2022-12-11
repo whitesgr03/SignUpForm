@@ -94,12 +94,12 @@
     padding: 0 10px;
 }
 
-.wrapper form .list .item:first-of-type,
-.wrapper form .list .item:nth-of-type(even):not(:nth-of-type(2)) {
+.wrapper form .list .item{
     margin-bottom: 30px;
 }
 
-.wrapper form .list .item:nth-of-type(2) {
+.wrapper form .list .item:nth-of-type(2),
+.wrapper form .list .item:nth-of-type(3) {
     margin-bottom: 10px;
 }
 
