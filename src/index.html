@@ -29,18 +29,19 @@
                         <legend>Let's do this!</legend>
                         <ul class="list">
                             <li class="item">
-                                <label for="firstName"
-                                    >NAME
+                                <label for="name"
+                                    >USER NAME
                                     <input
                                         type="text"
-                                        id="firstName"
-                                        title="The name must be alphabet."
-                                        maxlength="15"
-                                        pattern="^[A-Za-z0-9]{1,15}$"
+                                        id="name"
+                                        name="userName"
+                                        title="The user name must be alphabet."
+                                        maxlength="30"
+                                        pattern="^[A-Za-z0-9]{1,30}$"
                                         required
                                     />
                                 </label>
-                                <span aria-live="polite" class="message"></span>
+                                <span aria-live="polite"></span>
                             </li>
                             <li class="item">
                                 <label for="password"
@@ -49,6 +50,7 @@
                                         type="password"
                                         id="password"
                                         minlength="8"
+                                        name="password"
                                         title="Password (UpperCase, LowerCase, Number or SpecialChar and min 8 Chars)"
                                         pattern="(?=^.{8,}$)((?=.*\d)|(?=.*_+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
                                         required
@@ -62,6 +64,8 @@
                                         type="password"
                                         id="confirm"
                                         minlength="8"
+                                        name="confirm"
+                                        title="The confirm must be the same as password."
                                         pattern="(?=^.{8,}$)((?=.*\d)|(?=.*_+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
                                         required
                                     />
@@ -90,6 +94,8 @@
                                     <input
                                         type="email"
                                         id="email"
+                                        name="email"
+                                        title="Email (Format: xxxx@mail.com)"
                                         pattern="^.+@.+$"
                                         required
                                     />
@@ -104,6 +110,7 @@
                                         id="phone"
                                         minlength="10"
                                         maxlength="10"
+                                        name="tel"
                                         title="Phone Number (Format: xxxxx-xxxxx)"
                                         pattern="^[0-9]{10}$"
                                         required
@@ -117,8 +124,9 @@
                                     <input
                                         type="text"
                                         id="address"
-                                        title="The address must be alphabet."
-                                        pattern="^[A-Za-z]{1,}$"
+                                        name="address"
+                                        title="The address must be alphanumeric."
+                                        pattern="^[A-Za-z0-9]{1,}$"
                                         required
                                     />
                                 </label>
@@ -130,8 +138,9 @@
                                     <input
                                         type="tel"
                                         id="zip"
+                                        name="zip"
                                         title="The zip must be numeric."
-                                        pattern="^[0-9]{1,9}$"
+                                        pattern="^[0-9]{3,6}$"
                                         required
                                     />
                                 </label>
