@@ -1,0 +1,259 @@
+.wrapper .info p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.wrapper .info p span {
+    font-style: italic;
+}
+
+.wrapper form {
+    position: relative;
+    margin-top: 40px;
+}
+
+.wrapper form:focus-within fieldset,
+.wrapper form:focus-within legend {
+    animation-play-state: paused;
+}
+
+.wrapper fieldset {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: 5px solid var(--main-color-light);
+    border-radius: 20px;
+    animation: neon-border 1.5s infinite alternate;
+}
+
+.wrapper legend {
+    position: absolute;
+    font-size: 1.5rem;
+    top: -18px;
+    left: 50px;
+    animation: neon-text 1.5s infinite alternate;
+}
+
+@keyframes neon-text {
+    0%,
+    19%,
+    21%,
+    23%,
+    25%,
+    54%,
+    56%,
+    100% {
+        text-shadow: -5px -5px 1rem var(--main-color-light),
+            5px 5px 1rem var(--main-color-light),
+            0 0 12px var(--neon-text-color), 0 0 14px var(--neon-text-color),
+            0 0 16px var(--neon-text-color), 0 0 18px var(--neon-text-color),
+            0 0 20px var(--neon-text-color);
+    }
+    20%,
+    24%,
+    55% {
+        text-shadow: none;
+        box-shadow: none;
+    }
+}
+
+@keyframes neon-border {
+    0%,
+    19%,
+    21%,
+    23%,
+    25%,
+    54%,
+    56%,
+    100% {
+        box-shadow: 0 0 5px var(--main-color-light),
+            inset 0 0 5px var(--main-color-light),
+            0 0 15px var(--neon-border-color),
+            inset 0 0 15px var(--neon-border-color),
+            0 0 20px var(--neon-border-color),
+            inset 0 0 20px var(--neon-border-color);
+    }
+
+    20%,
+    24%,
+    55% {
+        text-shadow: none;
+        box-shadow: none;
+    }
+}
+
+.wrapper form .list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px 25px;
+}
+
+.wrapper form .list .item {
+    position: relative;
+    flex: 0 1 50%;
+    padding: 0 10px;
+}
+
+.wrapper form .list .item:first-of-type,
+.wrapper form .list .item:nth-of-type(even):not(:nth-of-type(2)) {
+    margin-bottom: 30px;
+}
+
+.wrapper form .list .item:nth-of-type(2) {
+    margin-bottom: 10px;
+}
+
+.wrapper form .list .item:first-of-type {
+    flex: 1 1 100%;
+}
+
+.wrapper form .item label {
+    position: relative;
+}
+
+.wrapper form .item label:focus-within {
+    color: #ff9865;
+}
+
+.wrapper form .list .item.error label::before {
+    content: "!";
+    width: 20px;
+    height: 20px;
+    background-color: var(--error-text-color);
+    border: 1px solid var(--error-text-color);
+    color: var(--main-color--light);
+    text-align: center;
+    border-radius: 100%;
+    position: absolute;
+    right: 100%;
+    bottom: 0%;
+    margin-right: 5px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.wrapper form .item input {
+    display: block;
+    background-color: transparent;
+    color: var(--main-color-light);
+    border: 1px solid var(--main-color-light);
+    border-radius: 5px;
+    padding: 10px 5px;
+    width: 100%;
+    margin-top: 5px;
+    position: relative;
+}
+
+.wrapper form .item.error input {
+    border-bottom: 1px solid var(--error-text-color);
+}
+
+.wrapper form .item.success input {
+    border-bottom: 1px solid var(--success-text-color);
+}
+
+.wrapper form .item.error span {
+    color: var(--error-text-color);
+    position: absolute;
+    margin-top: 5px;
+    top: 100%;
+}
+
+.wrapper form .list .item.passwordRules {
+    flex: 1 1 100%;
+}
+
+.wrapper form .passwordRules ul {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.wrapper form .passwordRules li {
+    position: relative;
+    opacity: 0.4;
+    display: flex;
+    align-items: center;
+}
+
+.wrapper form .passwordRules li.success {
+    color: var(--success-text-color);
+    opacity: 1;
+}
+
+.wrapper form .passwordRules li.error {
+    color: var(--error-text-color);
+    opacity: 1;
+}
+
+.wrapper form .passwordRules li::before {
+    content: "*";
+    width: 20px;
+    text-align: center;
+}
+
+.wrapper form .passwordRules li.error::before {
+    content: "✖";
+    color: red;
+}
+
+.wrapper form .passwordRules li.success::before {
+    content: "✓";
+    color: green;
+}
+
+.wrapper form .submitBtn {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+}
+
+.wrapper form .submitBtn button {
+    padding: 10px 50px;
+    background-color: var(--button-color);
+    border-radius: 10px;
+    border: 0;
+
+    cursor: pointer;
+    margin-bottom: 16px;
+    color: var(--main-color);
+}
+
+.wrapper form .submitBtn button:hover {
+    box-shadow: 0px 0px 5px 3px var(--main-color-light);
+}
+
+.wrapper form .submitBtn p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+}
+
+.wrapper form .submitBtn a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--neon-border-color);
+    font-weight: bold;
+    overflow: hidden;
+    position: relative;
+}
+
+.wrapper form .submitBtn a::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    border-bottom: 1px solid var(--neon-border-color);
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.wrapper form .submitBtn a:hover::before {
+    transform: translateX(0%);
+}
