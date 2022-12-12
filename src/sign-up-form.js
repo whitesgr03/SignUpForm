@@ -48,7 +48,7 @@ const createSignUpForm = () => {
             username: "^[A-Za-z0-9]{5,30}$",
             email: "^.+@.+$",
             phone: "^[0-9]{10}$",
-            country: "^[A-Za-z0-9]{1,}$",
+            address: "^[A-Za-z0-9]{1,}$",
             zip: "^[0-9]{3,6}$",
         };
 
@@ -217,8 +217,8 @@ const createSignUpForm = () => {
             case "phone":
                 errorMessage = "The Phone must be 10 digits";
                 break;
-            case "country":
-                errorMessage = "The country must be alphanumeric.";
+            case "address":
+                errorMessage = "The address must be alphanumeric.";
                 break;
             case "zip":
                 errorMessage = "The zip must be 3 to 6 digits.";
