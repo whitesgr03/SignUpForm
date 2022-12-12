@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sign Up Form</title>
+    <script defer src="runtime.e30782b6f83ed1df2155.js"></script><script defer src="index.faf83a952fbcb8840bdc.js"></script></head>
+    <body>
+        <main>
+            <aside>
+                <div class="logo">
+                    <img src="img/d0911db4d7388ecfefbf.png" alt="logo" />
+                    <span class="title">Ailuros</span>
+                </div>
+            </aside>
+            <div class="wrapper">
+                <div class="info">
+                    <p>
+                        This is not a real online service! You know you need
+                        something like this in your life to help you realize
+                        your deepest dreams.
+                    </p>
+                    <p>Sign up <span>now</span> to get started.</p>
+                    <p>You know you want to.</p>
+                </div>
+                <form novalidate>
+                    <fieldset>
+                        <legend>Let's do this!</legend>
+                        <ul class="list">
+                            <li class="item">
+                                <label for="username"
+                                    >NAME
+                                    <div class="icon">
+                                        <input
+                                            type="text"
+                                            id="username"
+                                            name="username"
+                                            title="The username must be alphabet."
+                                            maxlength="30"
+                                            pattern="^[A-Za-z0-9]{1,30}$"
+                                            required
+                                        />
+                                    </div>
+                                </label>
+                                <span aria-live="polite" class="message"></span>
+                            </li>
+                            <li class="item">
+                                <label for="password"
+                                    >PASSWORD
+                                    <div class="icon">
+                                        <input
+                                            type="password"
+                                            id="password"
+                                            minlength="8"
+                                            name="password"
+                                            title="Password (UpperCase, LowerCase, Number or SpecialChar and min 8 Chars)"
+                                            pattern="(?=^.{8,}$)((?=.*\d)|(?=.*_+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+                                            required
+                                        />
+                                    </div>
+                                </label>
+                            </li>
+                            <li class="item">
+                                <label for="confirm"
+                                    >CONFIRM PASSWORD
+                                    <div class="icon">
+                                        <input
+                                            type="password"
+                                            id="confirm"
+                                            minlength="8"
+                                            name="confirm"
+                                            title="The confirm must be the same as password."
+                                            required
+                                        />
+                                    </div>
+                                </label>
+                                <span aria-live="polite" class="message"></span>
+                            </li>
+                            <li class="item passwordRules" aria-live="polite">
+                                <ul>
+                                    <li data-rule="lowerCase">
+                                        One lowercase character
+                                    </li>
+                                    <li data-rule="upperCase">
+                                        One uppercase character
+                                    </li>
+                                    <li data-rule="numericUnderscore">
+                                        One number or underscore
+                                    </li>
+                                    <li data-rule="length">
+                                        At least 8 characters without spaces
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="item">
+                                <label for="email"
+                                    >EMAIL
+                                    <div class="icon">
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            title="Email (Format: xxxx@mail.com)"
+                                            pattern="^.+@.+$"
+                                            required
+                                        />
+                                    </div>
+                                </label>
+                                <span aria-live="polite" class="message"></span>
+                            </li>
+                            <li class="item">
+                                <label for="phone"
+                                    >PHONE NUMBER
+                                    <div class="icon">
+                                        <input
+                                            type="tel"
+                                            id="phone"
+                                            minlength="10"
+                                            maxlength="10"
+                                            name="phone"
+                                            title="Phone Number (Format: xxxxx-xxxxx)"
+                                            pattern="^[0-9]{10}$"
+                                            required
+                                        />
+                                    </div>
+                                </label>
+                                <span aria-live="polite" class="message"></span>
+                            </li>
+                            <li class="item">
+                                <label for="country"
+                                    >COUNTRY
+                                    <div class="icon">
+                                        <input
+                                            type="text"
+                                            id="country"
+                                            name="country"
+                                            title="The country must be alphabet."
+                                            pattern="^[A-Za-z0-9]{1,}$"
+                                            required
+                                        />
+                                    </div>
+                                </label>
+                                <span aria-live="polite" class="message"></span>
+                            </li>
+                            <li class="item">
+                                <label for="zip"
+                                    >ZIP CODE
+                                    <div class="icon">
+                                        <input
+                                            type="tel"
+                                            id="zip"
+                                            name="zip"
+                                            minlength="3"
+                                            maxlength="6"
+                                            title="The zip must be numeric."
+                                            pattern="^[0-9]{3,6}$"
+                                            required
+                                        />
+                                    </div>
+                                </label>
+                                <span aria-live="polite" class="message"></span>
+                            </li>
+                        </ul>
+                    </fieldset>
+                    <div class="submitBtn">
+                        <button type="submit">Create Account</button>
+                        <p>
+                            Already have an account?
+                            <a href="#">Log in</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </body>
+</html>
