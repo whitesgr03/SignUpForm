@@ -209,13 +209,13 @@ const createSignUpForm = () => {
 
         switch (field) {
             case "username":
-                errorMessage = "The username must be 5 to 30 alphabet.";
+                errorMessage = "The name must be 5 to 30 alphabet.";
                 break;
             case "email":
                 errorMessage = "The email must contain prefix and domain.";
                 break;
             case "phone":
-                errorMessage = "The Phone must be 10 digits";
+                errorMessage = "The phone number must be 10 digits.";
                 break;
             case "address":
                 errorMessage = "The address must be alphanumeric.";
